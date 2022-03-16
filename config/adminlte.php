@@ -253,6 +253,20 @@ return [
             'label'       => 2,
             'label_color' => 'success',
         ],
+        // ['header' => 'Contactos'],
+        [
+            'text' => 'Contactos', 
+            'submenu' => [
+                [
+                    'text' => 'Mostrar Contactos',
+                    'route' => 'contact.index'
+                ],
+                [
+                    'text' => 'Crear Contacto',
+                    'route' => 'contact.create'
+                ]
+            ]
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
