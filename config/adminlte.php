@@ -246,24 +246,27 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 2,
-            'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 2,
+        //     'label_color' => 'success',
+        // ],
         // ['header' => 'Contactos'],
         [
-            'text' => 'Contactos', 
+            'text' => 'Contactos',
+            'icon' => 'fas fa-fw fa-user',
             'submenu' => [
                 [
                     'text' => 'Mostrar Contactos',
-                    'route' => 'contact.index'
+                    'route' => 'contacts.index'
+                    // 'url' => '/admin/contacts'
                 ],
                 [
                     'text' => 'Crear Contacto',
-                    'route' => 'contact.create'
+                    'route' => 'contacts.create'
+                    // 'url' => '/admin/contacts/create'
                 ]
             ]
         ],
