@@ -26,7 +26,7 @@
                     <td>{{$contact->number}}</td>
                     <td>{{$contact->email}}</td>
                     <td>
-                        <a href="#">
+                        <a href="{{ route('contacts.edit', $contact)}}">
                             <button class="btn btn-primary">Editar</button>
                         </a>
                     </td>

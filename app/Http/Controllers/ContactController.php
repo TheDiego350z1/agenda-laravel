@@ -67,9 +67,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('contact.edit', compact('contact'));
     }
 
     /**
@@ -79,9 +79,15 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ContactRequest $request, $id)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        //
+        // var_dump($request);
+
+        $contact->update($request->all());
+        $contact->save();
+
+        return back()->with('status', 'Contacto actualizado con éxito');
+
     }
 
     /**
