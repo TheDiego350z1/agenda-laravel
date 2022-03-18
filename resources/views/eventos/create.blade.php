@@ -16,10 +16,10 @@
     </div>
     <div class="container">
         <div class="row  d-flex justify-content-center">
-            <form action="{{ route('contacts.store') }}" method="POST" class="col-6">
+            <form action="{{ route('events.store') }}" method="POST" class="col-6">
                 <div class="mb-3">
-                    <label for="frist_name" class="form-label">Nombre del evento</label>
-                    <input type="text" name="frist_name" class="form-control" required id="frist_name" value="{{ old('frist_name')}}" />
+                    <label for="name" class="form-label">Nombre del evento</label>
+                    <input type="text" name="name" class="form-control" required id="frist_name" value="{{ old('frist_name')}}" />
                 </div>
                 <div class="form-floating">
                     <label for="descrip">Descripción del evento</label>
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <label for="contact_id">Contacto  Asignado</label>
-                    <select class="form-select form-select-sm form-control" aria-label="Default select example">
+                    <select class="form-select form-select-sm form-control" name="contact_id" aria-label="Default select example">
                         @foreach($contacts as $contact)
                             <option value="{{$contact->id}}">{{$contact->frist_name}}</option>
                         @endforeach

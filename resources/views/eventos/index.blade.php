@@ -23,9 +23,11 @@
                         <h5>{{ $event->frist_name, $event->last_name}}</h5>
                         <p class="card-text">{{ $event->descrip }}</p>
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('events.update', $event->id) }}" class="btn btn-primary">
-                                Confirmar Asistencia
-                            </a>
+                            <form action="{{ route('events.destroy', $event->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Confirmar" class="btn btn-sm btn-danger" onclick="return confirm('¿Confirmar asistencia?')"/>
+                            </form>
                         </div>
                     </div>
                 </div>

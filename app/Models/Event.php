@@ -9,6 +9,13 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'contact_id',
+        'name',
+        'descrip'
+    ];
+
     public function Contacts()
     {
         return $this->hasMany(Contact::class, 'id');

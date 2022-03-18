@@ -261,12 +261,10 @@ return [
                 [
                     'text' => 'Mostrar Contactos',
                     'route' => 'contacts.index'
-                    // 'url' => '/admin/contacts'
                 ],
                 [
                     'text' => 'Crear Contacto',
                     'route' => 'contacts.create'
-                    // 'url' => '/admin/contacts/create'
                 ]
             ]
         ],

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +21,7 @@ class EventController extends Controller
         $events = Event::join('contacts', "events.contact_id" , "=", "contacts.id")
                     ->select("events.id", "events.name", "events.descrip", "events.descrip", "events.status", "contacts.frist_name", "contacts.last_name")
                     ->where('status', '1')
+                    ->orderBy('id', 'desc')
                     ->get();
 
         // $events
@@ -36,7 +37,7 @@ class EventController extends Controller
     public function create()
     {
         $UserId = Auth::id();
-        $contacts = Contact::where('user_id', $UserId);
+        $contacts = Contact::where('user_id', $UserId)->get();
 
         return view('eventos.create', compact('contacts'));
     }
@@ -47,9 +48,18 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $UserId = Auth::id();
+
+        $event = Event::create([
+            'user_id' => $UserId
+        ] + $request->all());
+
+        $event->save();
+
+        return back()->with('status', 'Contacto creado con éxito');
+        // dd($request);
     }
 
     /**
@@ -81,7 +91,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
         //
     }
@@ -94,6 +104,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        $event->status = 0;
+
+        $event->save();
+
+        return back()->with('status', 'Confirmación realizada con exito');
     }
 }
