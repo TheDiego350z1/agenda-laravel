@@ -260,27 +260,44 @@ return [
             'submenu' => [
                 [
                     'text' => 'Mostrar Contactos',
-                    'route' => 'contacts.index'
+                    'route' => 'contacts.index',
+                    // 'can' => 'admin'
                 ],
                 [
                     'text' => 'Crear Contacto',
-                    'route' => 'contacts.create'
+                    'route' => 'contacts.create',
+                    // 'can' => 'admin'
                 ]
             ]
         ],
         [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Mostrar Usuarios',
+                    'route' => 'admin.users.index',
+                    // 'can' => 'admin'
+                ],
+                // [
+                //     'text' => 'Crear Contacto',
+                //     'route' => 'contacts.create',
+                //     // 'can' => 'admin'
+                // ]
+            ]
+        ],
+        [
             'text' => 'Eventos',
-            // 'icon' => 'fas fa-fw fa-user',
             'submenu' => [
                 [
                     'text' => 'Mostrar Eventos',
                     'route' => 'events.index',
-                    // 'url' => '/admin/contacts'
+                    'can' => 'admin'
                 ],
                 [
                     'text' => 'Crear Evento',
-                    'route' => 'events.create'
-                    // 'url' => '/admin/contacts/create'
+                    'route' => 'events.create',
+                    'can' => 'admin'
                 ]
             ]
         ],
