@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
+use App\Models\Contact;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -13,7 +16,16 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        // $events = Event::where('status', '1')->get(); //Consulta de post activos
+
+        $events = Event::join('contacts', "events.contact_id" , "=", "contacts.id")
+                    ->select("events.id", "events.name", "events.descrip", "events.descrip", "events.status", "contacts.frist_name", "contacts.last_name")
+                    ->where('status', '1')
+                    ->get();
+
+        // $events
+
+        return view('eventos.index', compact('events'));
     }
 
     /**
@@ -23,7 +35,10 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $UserId = Auth::id();
+        $contacts = Contact::where('user_id', $UserId);
+
+        return view('eventos.create', compact('contacts'));
     }
 
     /**

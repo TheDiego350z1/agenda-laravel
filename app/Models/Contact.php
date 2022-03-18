@@ -21,4 +21,8 @@ class Contact extends Model
     {
         return $this->belongsTo(User::clas, 'user_id');
     }
+    public function Events()
+    {
+        return $this->belongsTo(Event::clas, 'contact_id');
+    }
 }

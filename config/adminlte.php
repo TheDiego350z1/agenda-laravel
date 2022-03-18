@@ -270,6 +270,22 @@ return [
                 ]
             ]
         ],
+        [
+            'text' => 'Eventos',
+            // 'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Mostrar Eventos',
+                    'route' => 'events.index',
+                    // 'url' => '/admin/contacts'
+                ],
+                [
+                    'text' => 'Crear Evento',
+                    'route' => 'events.create'
+                    // 'url' => '/admin/contacts/create'
+                ]
+            ]
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

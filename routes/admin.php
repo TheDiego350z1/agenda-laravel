@@ -8,4 +8,4 @@ use App\Http\Controllers\EventController;
 Route::get('', [HomeController::class, 'index']);
 
 Route::resource('/contacts', ContactController::class);
-Route::resource('/events', ContactController::class);
+Route::resource('/events', EventController::class);
